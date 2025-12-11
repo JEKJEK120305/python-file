@@ -116,17 +116,46 @@ def restaurant():
                     e_rice = 50
                     erice_quantity = int(input("Enter number of extra rice: "))
                     t_erice = e_rice*erice_quantity
-                    print(f"Total extra rice you've ordered {t_erice}")
+                    print(f"Total extra rice you've ordered is {t_erice}")
                     tamount = (tamount + t_erice)
                 elif extra_rice == 'n':
-                    continue
+                    print("ok po!\n")
                 else:
                     print("INVALID!")
+                print(f'The total amount to be paid is {tamount} pesos')
             else:
-                print("No result!")
-        
-            
-                
-        
+                break
+
+            if menu == "A" or menu == "B" or menu == "C" or menu == "D" or menu == "E":
+                print("\nDiscount:\nPWD: 20%\nSTUDENT: 15%\nSENIOR CITIZEN: 25%\n\n")
+                discount = input("Enter type of discount. PWD/ST/SE: ").upper()
+                if discount == 'PWD':
+                    print("You have 20 percent discount of your order.\n")
+                    discount_computation=(20/100)
+                    discount_amount=tamount-(tamount*discount_computation)
+                    print("Final amount is {}".format(discount_amount))
+                elif discount == 'ST':
+                    print("You have 15 percent discount of your order.\n")
+                    discount_computation=(15/100)
+                    discount_amount=tamount-(tamount*discount_computation)
+                    print("Final amount is {}".format(discount_amount))
+                elif discount == 'SE':
+                    print("You have 25 percent discount of your order.\n")
+                    discount_computation=(25/100)
+                    discount_amount=tamount-(tamount*discount_computation)
+                    print("Final amount is {}".format(discount_amount))  
+                else:
+                    print("Sorry INVALID!")
+            else:
+                break
+
+            cash=float(input("Enter your payment: "))
+            if cash > discount_amount:
+                change=cash-discount_amount
+                print(f'Your change is {change}')
+            elif cash == discount_amount:
+                print("Thank you for the exact amount!")
+            else:
+                print("Not enough!")
 
 restaurant()
