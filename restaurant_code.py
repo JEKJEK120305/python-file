@@ -109,7 +109,7 @@ def restaurant():
                 print("Invalid ka boss may pambayad ka ba?")
 
             if menu == 'E':
-                continue
+                print('')
             elif menu == 'A' or menu == 'B' or menu == 'C' or menu == 'D':
                 extra_rice = input("Do you want extra rice? y/n: ").lower()
                 if extra_rice == 'y':
@@ -149,13 +149,17 @@ def restaurant():
             else:
                 break
 
-            cash=float(input("Enter your payment: "))
-            if cash > discount_amount:
-                change=cash-discount_amount
-                print(f'Your change is {change}')
-            elif cash == discount_amount:
-                print("Thank you for the exact amount!")
-            else:
-                print("Not enough!")
+            payment_method=input("What payment method do you want? CASH or ONLINE: ").upper()
+            if payment_method == 'CASH':
+                cash_amount=float(input("Enter your payment: "))
+                if cash_amount > discount_amount:
+                    change=cash_amount-discount_amount
+                    print(f'Your change is {change}')
+                elif cash_amount == discount_amount:
+                    print("Thank you for the exact amount!")
+                else:
+                    print("Not enough!")
+            elif payment_method == 'ONLINE':
+                pass
 
 restaurant()
