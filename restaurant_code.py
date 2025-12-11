@@ -88,10 +88,6 @@ def restaurant():
                 else:
                     print("INVALID ka boss layas!")
 
-            extra_rice = input("Do you want extra rice? y/n: ").lower()
-            if extra_rice == 'y':
-                pass
-
             elif menu == 'E':
                 print("Choose type of Drink:\nA. Coca Cola          ---₱43.0\nB. Mountain Dew       ---₱58.0")
                 drink = input("Enter drink of your choice: ").upper()
@@ -109,5 +105,28 @@ def restaurant():
                     print(f'Your total order is: {tamount}')
                 else:
                     print("INVALID ka boss layas!")
+            else:
+                print("Invalid ka boss may pambayad ka ba?")
 
-restaurant()       
+            if menu == 'E':
+                continue
+            elif menu == 'A' or menu == 'B' or menu == 'C' or menu == 'D':
+                extra_rice = input("Do you want extra rice? y/n: ").lower()
+                if extra_rice == 'y':
+                    e_rice = 50
+                    erice_quantity = int(input("Enter number of extra rice: "))
+                    t_erice = e_rice*erice_quantity
+                    print(f"Total extra rice you've ordered {t_erice}")
+                    tamount = (tamount + t_erice)
+                elif extra_rice == 'n':
+                    continue
+                else:
+                    print("INVALID!")
+            else:
+                print("No result!")
+        
+            
+                
+        
+
+restaurant()
