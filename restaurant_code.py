@@ -2,10 +2,9 @@ print("Jek's yummy restaurant\n\n\nMenu list:\n\tA. Chicken\n\tB. Pork\n\tC. Bee
 
 def restaurant():
     menu = ""
-    order = "y"
+    order = input("Do you want to order? y/n: ").lower()
 
     while order == 'y':
-        order = input("Do you want to order? y/n: ").lower()
         if order == 'y':
             menu = input('\nEnter menu of your choice: ').upper()
             if menu == 'A':
@@ -151,15 +150,21 @@ def restaurant():
 
             payment_method=input("What payment method do you want? CASH or ONLINE: ").upper()
             if payment_method == 'CASH':
-                cash_amount=float(input("Enter your payment: "))
-                if cash_amount > discount_amount:
-                    change=cash_amount-discount_amount
-                    print(f'Your change is {change}')
-                elif cash_amount == discount_amount:
+                payment_amount=float(input("Enter your payment: "))
+                if payment_amount > discount_amount:
+                    change=payment_amount-discount_amount
+                    print(f'Your change is {round(change, 2)}')
+                elif payment_amount == discount_amount:
                     print("Thank you for the exact amount!")
                 else:
                     print("Not enough!")
             elif payment_method == 'ONLINE':
-                pass
-
+                payment_amount=discount_amount
+                change=0
+                print(f'Your payment of {payment_amount} is successfully proceed. Thank you!')
+            else:
+                print("Invalid payment method!")
+               
+        order = input("Do you want to order again? y/n: ").lower()
+        print("\n" + "="*15 + "RECEIPT" + "="*15 + "\nTotal: {}\n===========\t\t=============\nDiscount type: {}\n===========\t\t=============\nDiscounted amount: {}\n===========\t\t=============\nPayment: {}\n===========\t\t=============\nChange: {}\n=============Thank You===============".format(tamount, discount, discount_amount, payment_amount, change))
 restaurant()
