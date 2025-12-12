@@ -165,6 +165,13 @@ def restaurant():
             else:
                 print("Invalid payment method!")
                
-        order = input("Do you want to order again? y/n: ").lower()
-        print("\n" + "="*15 + "RECEIPT" + "="*15 + "\nTotal: {}\n===========\t\t=============\nDiscount type: {}\n===========\t\t=============\nDiscounted amount: {}\n===========\t\t=============\nPayment: {}\n===========\t\t=============\nChange: {}\n=============Thank You===============".format(tamount, discount, discount_amount, payment_amount, change))
+        print("\n" + "="*15 + "RECEIPT" + "="*15 + "\nTotal: {}\n\n===========\t\t=============\nDiscount type: {}\n\n===========\t\t=============\nDiscounted amount: {}\n\n===========\t\t=============\nPayment: {}\n\n===========\t\t=============\nChange: {}\n\n=============Thank You===============".format(tamount, discount, discount_amount, payment_amount, round(change, 2)))
+        order = input("\n\nDo you want to order again? y/n: ").lower()
+        if order == 'y':
+            print('')
+        elif order == 'n':
+            print('Thanks and come again!')
+        else:
+            break        
+
 restaurant()
