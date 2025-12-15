@@ -125,45 +125,44 @@ def restaurant():
             else:
                 break
 
-            if menu == "A" or menu == "B" or menu == "C" or menu == "D" or menu == "E":
-                print("\nDiscount:\nPWD: 20%\nSTUDENT: 15%\nSENIOR CITIZEN: 25%\n\n")
-                discount = input("Enter type of discount. PWD/ST/SE: ").upper()
-                if discount == 'PWD':
-                    print("You have 20 percent discount of your order.\n")
-                    discount_computation=(20/100)
-                    discount_amount=tamount-(tamount*discount_computation)
-                    print("Final amount is {}".format(discount_amount))
-                elif discount == 'ST':
-                    print("You have 15 percent discount of your order.\n")
-                    discount_computation=(15/100)
-                    discount_amount=tamount-(tamount*discount_computation)
-                    print("Final amount is {}".format(discount_amount))
-                elif discount == 'SE':
-                    print("You have 25 percent discount of your order.\n")
-                    discount_computation=(25/100)
-                    discount_amount=tamount-(tamount*discount_computation)
-                    print("Final amount is {}".format(discount_amount))  
-                else:
-                    print("Sorry INVALID!")
+            print("\nDiscount:\nPWD: 20%\nSTUDENT: 15%\nSENIOR CITIZEN: 25%\n\n")
+            discount = input("Enter type of discount. PWD/ST/SE: ").upper()
+            if discount == 'PWD':
+                print("You have 20 percent discount of your order.\n")
+                discount_computation=(20/100)
+                discount_amount=tamount-(tamount*discount_computation)
+                print("Final amount is {}".format(discount_amount))
+            elif discount == 'ST':
+                print("You have 15 percent discount of your order.\n")
+                discount_computation=(15/100)
+                discount_amount=tamount-(tamount*discount_computation)
+                print("Final amount is {}".format(discount_amount))
+            elif discount == 'SE':
+                print("You have 25 percent discount of your order.\n")
+                discount_computation=(25/100)
+                discount_amount=tamount-(tamount*discount_computation)
+                print("Final amount is {}".format(discount_amount))  
             else:
-                break
+                print("Sorry INVALID!")
+        else:
+            break
 
-            payment_method=input("What payment method do you want? CASH or ONLINE: ").upper()
-            if payment_method == 'CASH':
-                payment_amount=float(input("Enter your payment: "))
-                if payment_amount > discount_amount:
-                    change=payment_amount-discount_amount
-                    print(f'Your change is {round(change, 2)}')
-                elif payment_amount == discount_amount:
-                    print("Thank you for the exact amount!")
-                else:
-                    print("Not enough!")
-            elif payment_method == 'ONLINE':
-                payment_amount=discount_amount
-                change=0
-                print(f'Your payment of {payment_amount} is successfully proceed. Thank you!')
+        payment_method=input("What payment method do you want? CASH or ONLINE: ").upper()
+        if payment_method == 'CASH':
+            payment_amount=float(input("Enter your payment: "))
+            if payment_amount > discount_amount:
+                change=payment_amount-discount_amount
+                print(f'Your change is {round(change, 2)}')
+            elif payment_amount == discount_amount:
+                print("Thank you for the exact amount!")
             else:
-                print("Invalid payment method!")
+                print("Not enough!")
+        elif payment_method == 'ONLINE':
+            payment_amount=discount_amount
+            change=0
+            print(f'Your payment of {payment_amount} is successfully proceed. Thank you!')
+        else:
+            print("Invalid payment method!")
                
         print("\n" + "="*15 + "RECEIPT" + "="*15 + "\nTotal: ₱{}\n\n===========\t\t=============\nDiscount type: {}\n\n===========\t\t=============\nDiscounted amount: ₱{}\n\n===========\t\t=============\nPayment: ₱{}\n\n===========\t\t=============\nChange: ₱{}\n\n=============Thank You===============".format(tamount, discount, discount_amount, payment_amount, round(change, 2)))
         order = input("\n\nDo you want to order again? y/n: ").lower()
